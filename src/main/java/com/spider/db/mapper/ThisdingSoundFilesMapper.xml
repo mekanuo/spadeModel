@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spider.db.dao.ThisdingSoundFilesDao">
+  <resultMap id="BaseResultMap" type="com.spider.db.po.ThisdingSoundFiles">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="city_sound_id" jdbcType="BIGINT" property="citySoundId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="big_img_path" jdbcType="VARCHAR" property="bigImgPath" />
+    <result column="smaill_img_path" jdbcType="VARCHAR" property="smaillImgPath" />
+    <result column="audio_path" jdbcType="VARCHAR" property="audioPath" />
+    <result column="ower" jdbcType="VARCHAR" property="ower" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, city_sound_id, title, description, big_img_path, smaill_img_path, audio_path, 
+    ower, created
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from thisding_sound_files
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from thisding_sound_files
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.spider.db.po.ThisdingSoundFiles">
+    insert into thisding_sound_files (id, city_sound_id, title, 
+      description, big_img_path, smaill_img_path, 
+      audio_path, ower, created
+      )
+    values (#{id,jdbcType=BIGINT}, #{citySoundId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{bigImgPath,jdbcType=VARCHAR}, #{smaillImgPath,jdbcType=VARCHAR}, 
+      #{audioPath,jdbcType=VARCHAR}, #{ower,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.spider.db.po.ThisdingSoundFiles">
+    insert into thisding_sound_files
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="citySoundId != null">
+        city_sound_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="bigImgPath != null">
+        big_img_path,
+      </if>
+      <if test="smaillImgPath != null">
+        smaill_img_path,
+      </if>
+      <if test="audioPath != null">
+        audio_path,
+      </if>
+      <if test="ower != null">
+        ower,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="citySoundId != null">
+        #{citySoundId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="bigImgPath != null">
+        #{bigImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="smaillImgPath != null">
+        #{smaillImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="audioPath != null">
+        #{audioPath,jdbcType=VARCHAR},
+      </if>
+      <if test="ower != null">
+        #{ower,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spider.db.po.ThisdingSoundFiles">
+    update thisding_sound_files
+    <set>
+      <if test="citySoundId != null">
+        city_sound_id = #{citySoundId,jdbcType=BIGINT},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="bigImgPath != null">
+        big_img_path = #{bigImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="smaillImgPath != null">
+        smaill_img_path = #{smaillImgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="audioPath != null">
+        audio_path = #{audioPath,jdbcType=VARCHAR},
+      </if>
+      <if test="ower != null">
+        ower = #{ower,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spider.db.po.ThisdingSoundFiles">
+    update thisding_sound_files
+    set city_sound_id = #{citySoundId,jdbcType=BIGINT},
+      title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      big_img_path = #{bigImgPath,jdbcType=VARCHAR},
+      smaill_img_path = #{smaillImgPath,jdbcType=VARCHAR},
+      audio_path = #{audioPath,jdbcType=VARCHAR},
+      ower = #{ower,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
